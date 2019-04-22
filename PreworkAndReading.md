@@ -53,7 +53,7 @@
 
 然后为进行 fio 测试，先将模拟 NVM 挂载在文件系统下，然后就能像普通磁盘一样操作。
 
-![fs](https://raw.githubusercontent.com/anineee/Images/master/fs1.jpg)
+![fs](https://raw.githubusercontent.com/anineee/Images/master/fs1.JPG)
 
 随后安装 fio 工具测试模拟NVM的性能并与磁盘对比。首先在官网下载安装包后，通过`.\configure` `make` `make install` 进行安装。具体参数可通过`fio -help`查看。
 
@@ -64,8 +64,8 @@ $ fio -filename=/dev/sda -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread=70 -
 
 $ fio -filename=/dev/pmem0m -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread=70 -ioengine=psync -bs=4k -size=2G -numjobs=50 -runtime=180 -group_reporting -name=randrw_70read_4k_nvm
 ```
-![rw-disk](https://raw.githubusercontent.com/anineee/Images/master/fio-disk-rw-result.jpg)
-![rw-nvm](https://raw.githubusercontent.com/anineee/Images/master/fio-nvm-rw-result.jpg)
+![rw-disk](https://raw.githubusercontent.com/anineee/Images/master/fio-disk-rw-result.JPG)
+![rw-nvm](https://raw.githubusercontent.com/anineee/Images/master/fio-nvm-rw-result.JPG)
 
 第二次测试为随机读(`-rw=randread`)2G大小内存。
 
@@ -74,8 +74,8 @@ $ fio -filename=/dev/sda -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psy
 
 $ fio -filename=/dev/pmem0m -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psync -bs=4k -size=2G -numjobs=50 -runtime=180 -group_reporting -name=randr_4k_nvm
 ```
-![rw-disk](https://raw.githubusercontent.com/anineee/Images/master/fio-disk-r-result.jpg)
-![rw-nvm](https://raw.githubusercontent.com/anineee/Images/master/fio-nvm-r-result.jpg)
+![rw-disk](https://raw.githubusercontent.com/anineee/Images/master/fio-disk-r-result.JPG)
+![rw-nvm](https://raw.githubusercontent.com/anineee/Images/master/fio-nvm-r-result.JPG)
 
 第三次测试为随机写(`-rw=randwrite`)2G大小内存。
 
@@ -84,8 +84,8 @@ $ fio -filename=/dev/sda -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=ps
 
 $ fio -filename=/dev/pmem0m -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=4k -size=2G -numjobs=50 -runtime=180 -group_reporting -name=randw_4k_nvm
 ```
-![rw-disk](https://raw.githubusercontent.com/anineee/Images/master/fio-disk-w-result.jpg)
-![rw-nvm](https://raw.githubusercontent.com/anineee/Images/master/fio-nvm-w-result.jpg)
+![rw-disk](https://raw.githubusercontent.com/anineee/Images/master/fio-disk-w-result.JPG)
+![rw-nvm](https://raw.githubusercontent.com/anineee/Images/master/fio-nvm-w-result.JPG)
 
 姑且只关注结果报告中组测试结果，io表示总共执行了多少size的IO；aggrb表示group总带宽；minb表示最小平均带宽；maxb表示最大平均带宽；mint表示group中线程的最短运行时间；maxt表示group中线程的最长运行时间。可见在三次测试中，模拟NVM的带宽大于磁盘带宽，且其运行时间小于磁盘运行时间，可认为模拟NVM的性能优于传统磁盘。
 
