@@ -79,8 +79,7 @@ $ fio -filename=/dev/sda -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=ps
 $ fio -filename=/dev/pmem0m -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=4k -size=2G -numjobs=50 -runtime=180 -group_reporting -name=randw_4k_nvm
 ```
 
-姑且只关注结果报告中画线部分，io 表示总共执行了多少size的IO；aggrb 表示group总带宽；minb 表示最小平均带宽；maxb表示最大平均带宽；mint表示group中线程的最短运行时间；maxt表示group中线程的最长运行时间。
-
+姑且只关注结果报告中画线部分，
 
 ## 论文阅读
 
@@ -106,11 +105,13 @@ XXXXXX
 XXXXXX
 
 ### FPTree的指纹技术有什么重要作用？
-XXXXXX
+由于线性查找未经过排序的叶子结点会在SCM中消耗大量的时间。为了提高效率，使用指纹技术，通过记录叶键的一个字节长度的哈希，防止探测没有匹配的键，极大的提高性能。
 
 ### 为了保证指纹技术的数学证明成立，哈希函数应如何选取？
 （哈希函数生成的哈希值具有什么特征，能简单对键值取模生成吗？）
-XXXXXX
+哈希函数需要满足均匀分布m个元素在n个可能的哈希值中，在一个字节的fingerprints的情况下n=256
+
+可以对键值进行简单取模，因为这样满足均匀分布的定理且满足期望推理中的概率公式
 
 ### 持久化指针的作用是什么？与课上学到的什么类似？
 XXXXXX
