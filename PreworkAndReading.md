@@ -39,4 +39,6 @@
 
 然后，`sudo su`进入根模式后通过`gedit /etc/default/grub`修改内存配置，添加语句`memmap=4G!4G`表示从内存4G位置（!标识符后）开始，划分4G大小（!标识符前）内存空间为非易失性内存。
 
-![gedit grub](https://note.youdao.com/yws/api/personal/file/WEB485fce0be5603bac9f5c000f69da0f52?method=getImage&version=41&cstk=oSXnNHLm)
+![gedit grub](C:\Users\DELL\Desktop\database\project\1\img\gedit-grub2)
+
+若配置成功，在 \dev 目录下生成
