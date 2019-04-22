@@ -87,7 +87,7 @@ $ fio -filename=/dev/pmem0m -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine
 ![rw-disk](https://raw.githubusercontent.com/anineee/Images/master/fio-disk-w-result.jpg)
 ![rw-nvm](https://raw.githubusercontent.com/anineee/Images/master/fio-nvm-w-result.jpg)
 
-姑且只关注结果报告中画线部分，io表示总共执行了多少size的IO；aggrb表示group总带宽；minb表示最小平均带宽；maxb表示最大平均带宽；mint表示group中线程的最短运行时间；maxt表示group中线程的最长运行时间。
+姑且只关注结果报告中组测试结果，io表示总共执行了多少size的IO；aggrb表示group总带宽；minb表示最小平均带宽；maxb表示最大平均带宽；mint表示group中线程的最短运行时间；maxt表示group中线程的最长运行时间。可见在三次测试中，模拟NVM的带宽大于磁盘带宽，且其运行时间小于磁盘运行时间，可认为模拟NVM的性能优于传统磁盘。
 
 >> https://www.cnblogs.com/raykuan/p/6914748.html
 
