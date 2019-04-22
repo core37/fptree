@@ -79,7 +79,8 @@ $ fio -filename=/dev/sda -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=ps
 $ fio -filename=/dev/pmem0m -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=4k -size=2G -numjobs=50 -runtime=180 -group_reporting -name=randw_4k_nvm
 ```
 
-姑且只关注结果报告中画线部分，
+姑且只关注结果报告中画线部分，io 表示总共执行了多少size的IO；aggrb 表示group总带宽；minb 表示最小平均带宽；maxb表示最大平均带宽；mint表示group中线程的最短运行时间；maxt表示group中线程的最长运行时间。
+
 
 ## 论文阅读
 
