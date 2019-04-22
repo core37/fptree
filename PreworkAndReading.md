@@ -85,6 +85,9 @@ $ fio -filename=/dev/pmem0m -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine
 
 >> https://www.cnblogs.com/raykuan/p/6914748.html
 
+### 使用PMDK的libpmem库编写样例程序操作模拟NVM（关键实验结果截图，附上编译命令和简单样例程序）。
+
+
 ## 论文阅读
 
 ### 总结一下本文的主要贡献和观点(500字以内)(不能翻译摘要)。
