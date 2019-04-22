@@ -49,6 +49,22 @@
 
 ![lsblk](https://raw.githubusercontent.com/anineee/Images/master/lsblk_LI.jpg)
 
+然后为进行 fio 测试，先将模拟 NVM 挂载在文件系统下，然后就能像普通磁盘一样操作。
+
+![fs](https://raw.githubusercontent.com/anineee/Images/master/fs1.jpg)
+
+随后安装 fio 工具测试模拟NVM的性能并与磁盘对比。首先在官网下载安装包后，通过`.\configure` `make` `make install` 进行安装。具体参数可通过`fio -help`查看。
+
+共进行三次测试，第一次测试为随机读写2G大小内存，其中读操作占70%。
+
+```
+$ fio -filename=/dev/sda -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread=70 -ioengine=psync -bs=4k -size=2G -numjobs=50 -runtime=180 -group_reporting -name=randrw_70read_4k_disk
+
+$ fio -filename=/dev/pmem0m -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread=70 -ioengine=psync -bs=4k -size=2G -numjobs=50 -runtime=180 -group_reporting -name=randrw_70read_4k_nvm
+```
+
+
+
 ## 论文阅读
 
 ### 总结一下本文的主要贡献和观点(500字以内)(不能翻译摘要)。
