@@ -64,8 +64,8 @@ $ fio -filename=/dev/sda -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread=70 -
 
 $ fio -filename=/dev/pmem0m -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread=70 -ioengine=psync -bs=4k -size=2G -numjobs=50 -runtime=180 -group_reporting -name=randrw_70read_4k_nvm
 ```
-![rw-disk](https://raw.githubusercontent.com/anineee/Images/master/fio-disk-rw-result.JPG)
-![rw-nvm](https://raw.githubusercontent.com/anineee/Images/master/fio-nvm-rw-result.JPG)
+![rw-disk]https://raw.githubusercontent.com/anineee/Images/master/fio-disk-rw-result.png)
+![rw-nvm](https://raw.githubusercontent.com/anineee/Images/master/fio-nvm-rw-result.png)
 
 第二次测试为随机读(`-rw=randread`)2G大小内存。
 
