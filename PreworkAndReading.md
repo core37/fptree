@@ -35,16 +35,13 @@
 
 首先，通过`dmesg | grep BIOS-e820`命令查看测试机的内存情况,可见从地址0x100000000到地址0x23fffffff有4.25G空闲内存。
 
-![内存情况](https://note.youdao.com/yws/api/personal/file/WEB4935acd0520cdde84801c7c450d551fa?method=getImage&version=40&cstk=oSXnNHLm)
+![内存情况](https://raw.githubusercontent.com/anineee/Images/master/set-again2.JPG)
 
 然后，`sudo su`进入根模式后通过`gedit /etc/default/grub`修改内存配置，添加语句`memmap=4G!4G`表示从内存4G位置（!标识符后）开始，划分4G大小（!标识符前）内存空间为非易失性内存。
 
-![gedit grub](C:\Users\DELL\Desktop\database\project\1\img\gedit-grub2)
+![gedit grub](https://raw.githubusercontent.com/anineee/Images/master/gedit-grub2.JPG)
 
 若配置成功，在 \dev 目录下生成
-
-![gedit grub](https://note.youdao.com/yws/api/personal/file/WEB485fce0be5603bac9f5c000f69da0f52?method=getImage&version=41&cstk=oSXnNHLm)
-
 
 ## 论文阅读
 
