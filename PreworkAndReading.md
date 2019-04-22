@@ -29,3 +29,14 @@
 然后，在内核空间调用`mmap()`（不同于用户空间函数），实现文件物理地址和进程虚拟地址的一一映射关系。至此，没有将任何文件数据拷贝到内存。
 
 最后，进程发起对这片映射空间的访问，引发缺页异常，确认无非法操作后，内核发起请求调页。先在交换缓存空间 **swap cache** 中寻找需要访问的内存页，如果没有则将文件内容从磁盘拷贝到物理内存。之后进程即可对这片主存进行读写操作，如果写操作改变了其内容，一定时间后系统会自动回写脏页面到对应磁盘地址，完成写入到文件的过程。修改过的脏页面并不会立即更新回文件中，而是有一段时间的延迟，可以调用`msync()`来强制同步, 将所写的内容立即保存到文件里了。
+
+### 参考Intel的NVM模拟教程模拟NVM环境，用fio等工具测试模拟NVM的性能并与磁盘对比（关键步骤结果截图）。
+在 Ubuntu 下配置，跳过内核配置、编译和安装步骤。
+
+首先，通过`dmesg | grep BIOS-e820`命令查看测试机的内存情况,可见从地址0x100000000到地址0x23fffffff有4.25G空闲内存。
+
+![内存情况](https://note.youdao.com/yws/api/personal/file/WEB4935acd0520cdde84801c7c450d551fa?method=getImage&version=40&cstk=oSXnNHLm)
+
+然后，`sudo su`进入根模式后通过`gedit /etc/default/grub`修改内存配置，添加语句`memmap=4G!4G`表示从内存4G位置（!标识符后）开始，划分4G大小（!标识符前）内存空间为非易失性内存。
+
+![gedit grub](https://note.youdao.com/yws/api/personal/file/WEB485fce0be5603bac9f5c000f69da0f52?method=getImage&version=41&cstk=oSXnNHLm)
