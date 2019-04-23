@@ -43,9 +43,9 @@
 
 ![gedit grub](https://raw.githubusercontent.com/anineee/Images/master/set-again.JPG)
 
-若配置成功，在 \dev 目录下生成 pmem0m 设备。通过`dmesg | grep user`查看分配后的内存情况，通过`sudo fdisk -l \dev\pmem0m`确认系统能够识别设备并查看设备详情，在 \dev 目录下通过`lsblk`查看内存情况。
+若配置成功，在 `\dev` 目录下生成 pmem0m 设备。通过`dmesg | grep user`查看分配后的内存情况，通过`sudo fdisk -l \dev\pmem0m`确认系统能够识别设备并查看设备详情，在 \dev 目录下通过`lsblk`查看内存情况。
 
-![dmesg]https://raw.githubusercontent.com/anineee/Images/master/grub-succeed2_LI.jpg)
+![dmesg](https://raw.githubusercontent.com/anineee/Images/master/grub-succeed2_LI.jpg)
 
 ![fdisk](https://raw.githubusercontent.com/anineee/Images/master/grup-succeed_LI.jpg)
 
