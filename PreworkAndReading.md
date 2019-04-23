@@ -66,7 +66,7 @@ $ fio -filename=/dev/pmem0m -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread=7
 ```
 ![rw-disk](https://raw.githubusercontent.com/anineee/Images/master/fio-disk-rw-result.png)
 
-![rw-nvm](https://raw.githubusercontent.com/anineee/Images/master/fio-nvm-rw-result.png)
+![rw-nvm](https://raw.githubusercontent.com/anineee/Images/master/fio-nvm-rw70-result.png)
 
 第二次测试为随机读(`-rw=randread`)2G大小内存。
 
