@@ -30,7 +30,7 @@
 
 最后，进程发起对这片映射空间的访问，引发缺页异常，确认无非法操作后，内核发起请求调页。先在交换缓存空间 **swap cache** 中寻找需要访问的内存页，如果没有则将文件内容从磁盘拷贝到物理内存。之后进程即可对这片主存进行读写操作，如果写操作改变了其内容，一定时间后系统会自动回写脏页面到对应磁盘地址，完成写入到文件的过程。修改过的脏页面并不会立即更新回文件中，而是有一段时间的延迟，可以调用`msync()`来强制同步, 将所写的内容立即保存到文件里了。
 
->> https://www.cnblogs.com/alantu2018/p/8460061.html
+>> 参考资料 https://www.cnblogs.com/alantu2018/p/8460061.html
 
 ### 参考Intel的NVM模拟教程模拟NVM环境，用fio等工具测试模拟NVM的性能并与磁盘对比（关键步骤结果截图）。
 在 Ubuntu 下配置，跳过内核配置、编译和安装步骤。
@@ -90,7 +90,7 @@ $ fio -filename=/dev/pmem0m -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine
 
 姑且只关注结果报告中组测试结果，io表示总共执行了多少size的IO；aggrb表示group总带宽；minb表示最小平均带宽；maxb表示最大平均带宽；mint表示group中线程的最短运行时间；maxt表示group中线程的最长运行时间。可见在三次测试中，模拟NVM的带宽大于磁盘带宽，且其运行时间小于磁盘运行时间，可认为模拟NVM的性能优于传统磁盘。
 
->> https://www.cnblogs.com/raykuan/p/6914748.html
+>> 参考资料 https://www.cnblogs.com/raykuan/p/6914748.html
 
 ### 使用PMDK的libpmem库编写样例程序操作模拟NVM（关键实验结果截图，附上编译命令和简单样例程序）。
 简单样例程序`full_copy.c`代码如下。
