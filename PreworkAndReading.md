@@ -39,9 +39,9 @@
 
 ![内存情况](https://raw.githubusercontent.com/anineee/Images/master/set-again2.JPG)
 
-然后，`sudo su`进入根模式后通过`gedit /etc/default/grub`修改内存配置，添加语句`memmap=4G!4G`表示从内存4G位置（!标识符后）开始，划分4G大小（!标识符前）内存空间为非易失性内存。
+然后，`sudo su`进入根模式后通过`gedit /etc/default/grub`修改内存配置，添加语句`memmap=4G!4G`表示从内存4G位置（!标识符后）开始，划分4G大小（!标识符前）内存空间为非易失性内存。`update-grub`后`reboot`重启。
 
-![gedit grub]()
+![gedit grub](https://raw.githubusercontent.com/anineee/Images/master/set-again.JPG)
 
 若配置成功，在 \dev 目录下生成 pmem0m 设备。通过`dmesg | grep user`查看分配后的内存情况，通过`sudo fdisk -l \dev\pmem0m`确认系统能够识别设备并查看设备详情，在 \dev 目录下通过`lsblk`查看内存情况。
 
@@ -229,12 +229,21 @@ LD_LIBRARY_PATH=/usr/lib:/usr/lib: cc -o full_copy full_copy.o -Wl,-rpath=../../
 
 执行生成的可执行程序，测试将`/home/anine/Desktop/src_test.txt`文件拷贝到模拟NVM`/mnt/pmemdir/dst_test.txt`处。
 
+![run](https://raw.githubusercontent.com/anineee/Images/master/full_copy_run.JPG)
+
 若`/mnt/pmemdir/dst_test.txt`文件已存在，报错。
 
-![copy-err]()
+![copy-err](https://raw.githubusercontent.com/anineee/Images/master/full_copy_err.JPG)
 
 成功拷贝的实验结果如图。
 
+![src](https://raw.githubusercontent.com/anineee/Images/master/full_copy_src.JPG)
+
+![src-content](https://raw.githubusercontent.com/anineee/Images/master/full_copy_src_content.JPG)
+
+![dst](https://raw.githubusercontent.com/anineee/Images/master/full_copy.JPG)
+
+![dst-content](https://raw.githubusercontent.com/anineee/Images/master/full_copy_content.JPG)
 
 ## 论文阅读
 
