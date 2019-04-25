@@ -57,7 +57,7 @@
 
 随后安装 fio 工具测试模拟NVM的性能并与磁盘对比。首先在官网下载安装包后，通过`.\configure` `make` `make install` 进行安装。具体参数可通过`fio -help`查看。
 
-共进行三次测试，第一次测试为随机读写(`-rw=randrw`)2G大小(`-size=2G`)内存，其中读操作占70%(`-rwmixread=70`)。
+共进行三次测试，第一次测试为随机读写(`-rw=randrw`)1G大小(`-size=1G`)内存，其中读操作占70%(`-rwmixread=70`)。
 
 ```
 $ fio -directory=/home/anine/Documents/diskdir -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread=70 -ioengine=psync -bs=4k -size=1G -numjobs=2 -runtime=180 -group_reporting -name=randrw_70read_4k_disk
@@ -68,7 +68,7 @@ $ fio -directory=/mnt/pmemdir -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread
 
 ![rw-nvm](https://raw.githubusercontent.com/anineee/Images/master/fio-rw-nvm.JPG)
 
-第二次测试为随机读(`-rw=randread`)2G大小内存。
+第二次测试为随机读(`-rw=randread`)1G大小内存。
 
 ```
 $ fio -directory=/home/anine/Documents/diskdir -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psync -bs=4k -size=1G -numjobs=2 -runtime=180 -group_reporting -name=randr_4k_disk
@@ -78,7 +78,7 @@ $ fio -filename=/mnt/pmemdir -direct=1 -iodepth 1 -thread -rw=randread -ioengine
 ![rw-disk](https://raw.githubusercontent.com/anineee/Images/master/fio-r-disk.JPG)
 ![rw-nvm](https://raw.githubusercontent.com/anineee/Images/master/fio-nvm-r2.JPG)
 
-第三次测试为随机写(`-rw=randwrite`)2G大小内存。
+第三次测试为随机写(`-rw=randwrite`)1G大小内存。
 
 ```
 $ fio -filename=/home/anine/Documents/diskdir -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=4k -size=1G -numjobs=2 -runtime=180 -group_reporting -name=ranrw_4k_disk
